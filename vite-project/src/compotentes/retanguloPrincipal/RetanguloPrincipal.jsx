@@ -11,9 +11,11 @@ const RetanguloPrincipal = () => {
     const [userData, setUserData] = useState(null);
     const [respostaUsuario, setRespostaUsuario] = useState(false)
     const [buscou, setBuscou] = useState(false);
+    const [loading, setLoading] = useState(false);
     const buscaUsuario = async  (e) =>{
         e.preventDefault();
         setBuscou(true);
+        setLoading(true);
         try {
             const response = await fetch(`https://api.github.com/users/${valorInput}`);
             if (response.ok){            
@@ -26,6 +28,9 @@ const RetanguloPrincipal = () => {
         } 
         catch (error) {
             setUserData(null);
+            setRespostaUsuario(false);
+        }finally{
+          setLoading(false);
         }
     };
     
@@ -54,6 +59,13 @@ const RetanguloPrincipal = () => {
                 onClick={buscaUsuario}
               />
             </div>
+
+            {loading && (
+              <div className="elemento loading">
+                  <p>Carregando...</p>
+                  {/* Ou um spinner bonito, tipo um ícone animado */}
+              </div>
+            )}
 
             {buscou &&
               (respostaUsuario ? (
