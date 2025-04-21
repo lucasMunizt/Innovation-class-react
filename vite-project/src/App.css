@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    background: linear-gradient(221deg,
+    rgba(0, 92, 255, 1) 0%,
+    rgba(31, 31, 31, 1) 30%,
+    rgba(31, 31, 31, 1) 78%,
+    rgba(0, 92, 255, 1) 100%);
+}
+
+.imagem-container{
+    position: absolute;
+    top: 30px;
+    left: 80px;
+    width: 0;
+    height: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#camadas{
+    width: 150px;
+    z-index: 0;
+    position: absolute;
+}
